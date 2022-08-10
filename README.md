@@ -1,0 +1,1 @@
+# Api para reconhecimento de imagem com tradução da resposta
