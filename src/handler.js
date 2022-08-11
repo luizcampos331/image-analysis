@@ -70,7 +70,6 @@ module.exports = class Handler {
     return finalText.join('\n')
   }
   async main(event) {
-    console.log('event', event)
     try {
 
       const {
@@ -82,15 +81,11 @@ module.exports = class Handler {
           body: 'an IMG is required!'
         }
       }
-      console.log('downloading image...')
       const buffer = await this.getImageBuffer(imageUrl)
-      console.log('detecting labels...')
       const {names, workingItems} = await this.detectImageLabels(buffer)
 
-      console.log('translating to Portuguese...')
       const texts = await this.translateText(names)
       const finalText = this.formatTextResults(texts, workingItems)
-      console.log('finishing...')
 
       return {
         statusCode: 200,
@@ -98,7 +93,6 @@ module.exports = class Handler {
       }
 
     } catch (error) {
-      console.error('DEU RUIM***', error.stack)
       return {
         statusCode: 500,
         body: 'Internal Server Error!'

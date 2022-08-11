@@ -9,5 +9,4 @@ const handler = new Handler({
   translatorSvc
 })
 
-// o bind serve para assegurar que o contexto this é a instancia de handler
 module.exports = handler.main.bind(handler)
